@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace IF4101_Lab1_Winform
 {
-    public partial class Window_form1 : Form
+    public partial class MainWindow : Form
     {
-        public Window_form1()
+        public MainWindow()
         {
             InitializeComponent();
         }
@@ -27,13 +27,13 @@ namespace IF4101_Lab1_Winform
             
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CalculatorWindow calculatorWindow = new CalculatorWindow();
             calculatorWindow.Show();
         }
 
-        private void menuStrip1_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e)
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             ManagerWindow managerWindow = new ManagerWindow();
             managerWindow.Show();

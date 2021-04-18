@@ -17,7 +17,7 @@ namespace IF4101_Lab1_Winform
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Window_form1());
+            Application.Run(new MainWindow());
         }
     }
 }
