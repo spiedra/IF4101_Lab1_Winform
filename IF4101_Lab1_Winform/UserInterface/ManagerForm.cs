@@ -1,23 +1,32 @@
 ﻿using System;
 using System.Windows.Forms;
-using IF4101_Lab1_Winform.DataAccess;
+using System.Collections.Generic;
 using IF4101_Lab1_Winform.Business;
+using IF4101_Lab1_Winform.DataAccess;
 
 namespace IF4101_Lab1_Winform
 {
     public partial class ManagerForm : Form
     {
+        private CurrencyBusiness currencyBusiness;
         public ManagerForm()
         {
             InitializeComponent();
+            this.InitCurrencyBusiness();
+            this.AddItemsToComboBox();
+        }
+
+        private void InitCurrencyBusiness()
+        {
+            this.currencyBusiness = new CurrencyBusiness();
         }
 
         private void btn_managerAdd_Click(object sender, EventArgs e)
         {
             this.getCountryInput();
             //test
-           //ConnectionDataAccess connectionDataAccess = new ConnectionDataAccess();
-           //connectionDataAccess.insertIntoTbCountry("Costa Rica", 2); 
+            //ConnectionDataAccess connectionDataAccess = new ConnectionDataAccess();
+            //connectionDataAccess.insertIntoTbCountry("Costa Rica", 2); 
         }
 
         private void getCountryInput()
@@ -29,6 +38,16 @@ namespace IF4101_Lab1_Winform
         private void getCurrencyInput()
         {
             //
+        }
+
+        private void AddItemsToComboBox()
+        {
+            List<CurrencyDataAccess> currencyList = new List<CurrencyDataAccess>();
+            currencyList = this.currencyBusiness.GetCurrencyData();
+            for(int i = 0; i < currencyList.Count; i++)
+            {
+                this.cmbx_managerCurrency.Items.Add(currencyList[i].CurrencyName);
+            }
         }
 
         private void chbx_managerAdd_Click(object sender, EventArgs e)
@@ -79,6 +98,16 @@ namespace IF4101_Lab1_Winform
             this.txb_managerNameContry.Visible = false;
             this.cmbx_managerCurrency.Visible = false;
             this.chbx_managerAdd.Checked = false;
+        }
+
+        private void cmbx_managerCurrency_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbx_managerCurrency_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

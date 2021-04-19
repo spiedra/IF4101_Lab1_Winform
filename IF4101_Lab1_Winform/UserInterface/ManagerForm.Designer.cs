@@ -117,6 +117,8 @@ namespace IF4101_Lab1_Winform
             this.cmbx_managerCurrency.Size = new System.Drawing.Size(276, 31);
             this.cmbx_managerCurrency.TabIndex = 6;
             this.cmbx_managerCurrency.Visible = false;
+            this.cmbx_managerCurrency.SelectedIndexChanged += new System.EventHandler(this.cmbx_managerCurrency_SelectedIndexChanged);
+            this.cmbx_managerCurrency.Click += new System.EventHandler(this.cmbx_managerCurrency_Click);
             // 
             // btn_managerAdd
             // 
