@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace IF4101_Lab1_Winform
 {
-    public partial class CalculatorWindow : Form
+    public partial class CalculatorForm : Form
     {
-        public CalculatorWindow()
+        public CalculatorForm()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace IF4101_Lab1_Winform
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void CalculatorWindow_Load(object sender, EventArgs e)

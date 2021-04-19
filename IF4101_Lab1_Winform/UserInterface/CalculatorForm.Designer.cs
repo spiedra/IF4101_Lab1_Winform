@@ -1,7 +1,7 @@
 ﻿
 namespace IF4101_Lab1_Winform
 {
-    partial class CalculatorWindow
+    partial class CalculatorForm
     {
         /// <summary>
         /// Required designer variable.

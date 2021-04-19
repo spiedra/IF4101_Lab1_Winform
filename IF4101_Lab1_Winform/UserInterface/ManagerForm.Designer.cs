@@ -1,7 +1,7 @@
 ﻿
 namespace IF4101_Lab1_Winform
 {
-    partial class ManagerWindow
+    partial class ManagerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -49,7 +49,6 @@ namespace IF4101_Lab1_Winform
             this.lb_managerTittle.Size = new System.Drawing.Size(436, 72);
             this.lb_managerTittle.TabIndex = 0;
             this.lb_managerTittle.Text = "CRUD Countries";
-            this.lb_managerTittle.Click += new System.EventHandler(this.lb_managerTittle_Click);
             // 
             // lb_managerNameCountry
             // 
@@ -61,7 +60,6 @@ namespace IF4101_Lab1_Winform
             this.lb_managerNameCountry.TabIndex = 1;
             this.lb_managerNameCountry.Text = "Name: ";
             this.lb_managerNameCountry.Visible = false;
-            this.lb_managerNameCountry.Click += new System.EventHandler(this.label1_Click);
             // 
             // chbx_managerAdd
             // 
@@ -130,6 +128,7 @@ namespace IF4101_Lab1_Winform
             this.btn_managerAdd.Text = "Add";
             this.btn_managerAdd.UseVisualStyleBackColor = true;
             this.btn_managerAdd.Visible = false;
+            this.btn_managerAdd.Click += new System.EventHandler(this.btn_managerAdd_Click);
             // 
             // cmbx_managerCountries
             // 
@@ -140,9 +139,8 @@ namespace IF4101_Lab1_Winform
             this.cmbx_managerCountries.Size = new System.Drawing.Size(276, 31);
             this.cmbx_managerCountries.TabIndex = 8;
             this.cmbx_managerCountries.Visible = false;
-            this.cmbx_managerCountries.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // ManagerWindow
+            // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -159,7 +157,7 @@ namespace IF4101_Lab1_Winform
             this.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ManagerWindow";
+            this.Name = "ManagerForm";
             this.Text = "Add";
             this.ResumeLayout(false);
             this.PerformLayout();

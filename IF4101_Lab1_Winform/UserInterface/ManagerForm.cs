@@ -1,23 +1,31 @@
 ﻿using System;
 using System.Windows.Forms;
+using IF4101_Lab1_Winform.DataAccess;
+using IF4101_Lab1_Winform.Business;
 
 namespace IF4101_Lab1_Winform
 {
-    public partial class ManagerWindow : Form
+    public partial class ManagerForm : Form
     {
-        public ManagerWindow()
+        public ManagerForm()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btn_managerAdd_Click(object sender, EventArgs e)
         {
-
+            this.getCountryInput();
         }
 
-        private void lb_managerTittle_Click(object sender, EventArgs e)
+        private void getCountryInput()
         {
+            CountryBusiness countryBusiness = new CountryBusiness();
+            countryBusiness.Country_name = this.txb_managerNameContry.Text;
+        }
 
+        private void getCurrencyInput()
+        {
+            //
         }
 
         private void chbx_managerAdd_Click(object sender, EventArgs e)
@@ -27,11 +35,6 @@ namespace IF4101_Lab1_Winform
                 this.setInvisibleDeleteComponets();
             }
             this.setVisibleAddComponents();
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void chbx_managerDelete_Click(object sender, EventArgs e)
