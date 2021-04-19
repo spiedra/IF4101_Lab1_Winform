@@ -9,28 +9,58 @@ namespace IF4101_Lab1_Winform.DataAccess
 {
     class ConnectionDataAccess
     {
+        private SqlCommand sqlCommand;
+        private SqlConnection sqlConnection;
         // Connection to database
 
-        public bool connectToDatabase()
+        private object connectToDatabase()
         {
             try
             {
-                string connectionString = getConnectionString();
-                SqlConnection sqlConnection = new SqlConnection(connectionString);
-                SqlCommand sqlCommand = new SqlCommand();
-
-                sqlCommand.CommandText = "INSERT INTO [COUNTRIES].[tb_COUNTRY]([COUNTRY_NAME],[CURRENCY_ID]) VALUES('JAJJAJJ', 2)";
-                sqlCommand.Connection = sqlConnection;
-                sqlConnection.Open();
-                sqlCommand.ExecuteNonQuery();
-                sqlConnection.Close();
-                return true;
+                SqlConnection sqlConnection = new SqlConnection(getConnectionString());
+                return sqlConnection;
             }
-            catch
+            catch (SqlException sqlException)
             {
-                return false; 
+                return sqlException.Number;
             }
-           
+        }
+
+        private void executeStoredProcedure()
+        {
+            this.sqlConnection.Open();
+            this.sqlCommand.CommandType = CommandType.StoredProcedure;
+            this.sqlCommand.ExecuteNonQuery();
+            this.sqlConnection.Close();
+        }
+
+        private void initSqlClientComponents(string comandText)
+        {
+            this.sqlConnection = (SqlConnection)connectToDatabase();
+            this.sqlCommand = new SqlCommand(comandText, this.sqlConnection);
+        }
+
+        private SqlParameter createParameter(string parameterName, SqlDbType dbType, object value)
+        {
+            SqlParameter sqlParameter = new SqlParameter(parameterName, dbType);
+            sqlParameter.Value = value;
+            return sqlParameter;
+        }
+
+        public void insertIntoTbCountry(string country_name, int currency_id)
+        {
+            string parameterName = "@COUNTRY_NAME";
+            string paramerCurrencyId = "@CURRENCY_ID";
+            string comandText = "COUNTRIES.sp_INSERT_COUNTRIES";
+            this.initSqlClientComponents(comandText);
+            this.sqlCommand.Parameters.Add(this.createParameter(parameterName, SqlDbType.VarChar, country_name));
+            this.sqlCommand.Parameters.Add(this.createParameter(paramerCurrencyId, SqlDbType.Int, currency_id));
+            this.executeStoredProcedure();
+        }
+
+        public void insertIntoTbCurrency()
+        {
+
         }
 
         static private string getConnectionString()
