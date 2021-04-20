@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using System.Collections.Generic;
 using IF4101_Lab1_Winform.Business;
-using IF4101_Lab1_Winform.DataAccess;
 
 namespace IF4101_Lab1_Winform
 {
@@ -42,7 +41,7 @@ namespace IF4101_Lab1_Winform
 
         private void AddItemsToComboBox()
         {
-            List<CurrencyDataAccess> currencyList = new List<CurrencyDataAccess>();
+            List<CurrencyBusiness> currencyList = new List<CurrencyBusiness>();
             currencyList = this.currencyBusiness.GetCurrencyData();
             for(int i = 0; i < currencyList.Count; i++)
             {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 // To connection
 using System.Data;
 using System.Data.SqlClient;
+using IF4101_Lab1_Winform.Business;
 
 namespace IF4101_Lab1_Winform.DataAccess
 {
@@ -11,7 +12,7 @@ namespace IF4101_Lab1_Winform.DataAccess
         private SqlCommand sqlCommand;
         private SqlConnection sqlConnection;
         private SqlDataReader sqlDataReader;
-        private List<CurrencyDataAccess> currencyList;
+        private List<CurrencyBusiness> currencyList;
         // Connection to database
 
         public ConnectionDataAccess()
@@ -68,7 +69,7 @@ namespace IF4101_Lab1_Winform.DataAccess
 
         }
 
-        public List<CurrencyDataAccess> GetCurrencyData()
+        public List<CurrencyBusiness> GetCurrencyData()
         {
             bool isExcuteReader = false;
             string comandText = "CURRENCY.sp_GET_CURRENCY_DATA";
@@ -81,10 +82,10 @@ namespace IF4101_Lab1_Winform.DataAccess
 
         private void ReadCurrencyData()
         {
-            this.currencyList = new List<CurrencyDataAccess>();
+            this.currencyList = new List<CurrencyBusiness>();
             while (this.sqlDataReader.Read())
             {
-                CurrencyDataAccess currencyDataAccess = new CurrencyDataAccess();
+                CurrencyBusiness currencyDataAccess = new CurrencyBusiness();
                 currencyDataAccess.CurrencyId = this.sqlDataReader.GetInt32(0);
                 currencyDataAccess.CurrencyName = this.sqlDataReader.GetString(1);
                 currencyDataAccess.DollaValue = this.sqlDataReader.GetInt32(2);

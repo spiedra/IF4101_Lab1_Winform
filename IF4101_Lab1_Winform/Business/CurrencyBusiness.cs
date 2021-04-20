@@ -15,7 +15,11 @@ namespace IF4101_Lab1_Winform.Business
             this.connectionDataAccess = new ConnectionDataAccess();
         }
 
-        public List<CurrencyDataAccess> GetCurrencyData()
+        public int CurrencyId { get; set; }
+        public string CurrencyName { get; set; }
+        public int DollaValue { get; set; }
+
+        public List<CurrencyBusiness> GetCurrencyData()
         {
             return this.connectionDataAccess.GetCurrencyData();
         }
