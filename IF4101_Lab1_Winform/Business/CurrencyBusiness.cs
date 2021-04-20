@@ -10,9 +10,18 @@ namespace IF4101_Lab1_Winform.Business
     {
         private ConnectionDataAccess connectionDataAccess;
 
-        public CurrencyBusiness()
+        public CurrencyBusiness() // default constructor
         {
+            this.CurrencyId = 0;
+            this.CurrencyName = null;
+            this.DollaValue = 0;
             this.connectionDataAccess = new ConnectionDataAccess();
+        }
+        public CurrencyBusiness(int currencyId, string currencyName, int dollarValue)
+        {
+            this.CurrencyId = currencyId;
+            this.CurrencyName = currencyName;
+            this.DollaValue = dollarValue;
         }
 
         public int CurrencyId { get; set; }

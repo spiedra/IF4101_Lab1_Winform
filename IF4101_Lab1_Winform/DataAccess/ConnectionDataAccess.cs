@@ -13,6 +13,7 @@ namespace IF4101_Lab1_Winform.DataAccess
         private SqlConnection sqlConnection;
         private SqlDataReader sqlDataReader;
         private List<CurrencyBusiness> currencyList;
+        private List<CountryBusiness> countryList;
         // Connection to database
 
         public ConnectionDataAccess()
@@ -33,18 +34,27 @@ namespace IF4101_Lab1_Winform.DataAccess
             }
         }
 
-        private void ExecuteStoredProcedure(bool conditional)
+        private void ExecuteNonQuery()
         {
             this.sqlConnection.Open();
             this.sqlCommand.CommandType = CommandType.StoredProcedure;
-            this.ExcecuteSqlCommand(conditional);
-            //this.sqlConnection.Close();
+            this.sqlCommand.ExecuteNonQuery();
         }
 
-        private void InitSqlClientComponents(string comandText)
+        private void ExecuteReaderQuery(string commandText, bool conditional)
+        {
+            this.InitSqlClientComponents(commandText);
+            this.sqlConnection.Open();
+            this.sqlCommand.CommandType = CommandType.StoredProcedure;
+            this.sqlDataReader = this.sqlCommand.ExecuteReader();
+            this.ReadObjectData(conditional);
+            this.SqlConnectionClose();
+        }
+
+        private void InitSqlClientComponents(string commandText)
         {
             this.sqlConnection = (SqlConnection)ConnectToDatabase();
-            this.sqlCommand = new SqlCommand(comandText, this.sqlConnection);
+            this.sqlCommand = new SqlCommand(commandText, this.sqlConnection);
         }
 
         private void CreateParameter(string parameterName, SqlDbType dbType, object value)
@@ -61,35 +71,57 @@ namespace IF4101_Lab1_Winform.DataAccess
             this.InitSqlClientComponents(comandText);
             this.CreateParameter(parameterName, SqlDbType.VarChar, country_name);
             this.CreateParameter(paramerCurrencyId, SqlDbType.Int, currency_id);
-            this.ExecuteStoredProcedure(isExcuteNonQuery);
-        }
-
-        public void InsertIntoTbCurrency()
-        {
-
+            //this.ExecuteStoredProcedure(isExcuteNonQuery);
+            this.SqlConnectionClose();
         }
 
         public List<CurrencyBusiness> GetCurrencyData()
         {
-            bool isExcuteReader = false;
-            string comandText = "CURRENCY.sp_GET_CURRENCY_DATA";
-            this.InitSqlClientComponents(comandText);
-            this.ExecuteStoredProcedure(isExcuteReader);
-            this.ReadCurrencyData();
-            this.sqlConnection.Close();
+            string commandText = "CURRENCY.sp_GET_CURRENCY_DATA";
+            this.ExecuteReaderQuery(commandText, true);
             return this.currencyList;
         }
 
-        private void ReadCurrencyData()
+
+        public List<CountryBusiness> GetCountryData()
+        {
+            string commandText = "COUNTRIES.sp_GET_COUNTRIES_DATA";
+            this.ExecuteReaderQuery(commandText, false);
+            return this.countryList;
+        }
+
+        private void ReadObjectData(bool conditional)
+        {
+            if (conditional)
+            {
+                this.CurrencyDataReader();
+            }
+            else
+            {
+                this.CountryDataReader();
+            }
+           
+        }
+
+        private void CurrencyDataReader()
         {
             this.currencyList = new List<CurrencyBusiness>();
             while (this.sqlDataReader.Read())
             {
-                CurrencyBusiness currencyDataAccess = new CurrencyBusiness();
-                currencyDataAccess.CurrencyId = this.sqlDataReader.GetInt32(0);
-                currencyDataAccess.CurrencyName = this.sqlDataReader.GetString(1);
-                currencyDataAccess.DollaValue = this.sqlDataReader.GetInt32(2);
+                CurrencyBusiness currencyDataAccess = new CurrencyBusiness(this.sqlDataReader.GetInt32(0),
+                    this.sqlDataReader.GetString(1), this.sqlDataReader.GetInt32(2));
                 this.currencyList.Add(currencyDataAccess);
+            }
+        }
+
+        private void CountryDataReader()
+        {
+            this.countryList = new List<CountryBusiness>();
+            while (this.sqlDataReader.Read())
+            {
+                CountryBusiness countryBusiness = new CountryBusiness(this.sqlDataReader.GetInt32(0),
+                    this.sqlDataReader.GetInt32(1), this.sqlDataReader.GetString(2));
+                this.countryList.Add(countryBusiness);
             }
         }
 
@@ -98,16 +130,9 @@ namespace IF4101_Lab1_Winform.DataAccess
             return "Data Source=SPIEDRA\\MYSSQLSERVER; database=IF4101_LAB1_B97452; User Id=juan; Password=piedra";
         }
 
-        private void ExcecuteSqlCommand(bool conditional)
+        private void SqlConnectionClose()
         {
-            if (conditional)
-            {
-                this.sqlCommand.ExecuteNonQuery();
-            }
-            else
-            {
-                this.sqlDataReader = this.sqlCommand.ExecuteReader();
-            }
+            this.sqlConnection.Close();
         }
     }
 }

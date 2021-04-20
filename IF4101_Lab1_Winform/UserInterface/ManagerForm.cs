@@ -8,16 +8,17 @@ namespace IF4101_Lab1_Winform
     public partial class ManagerForm : Form
     {
         private CurrencyBusiness currencyBusiness;
+        private CountryBusiness countryBusiness;
         public ManagerForm()
         {
             InitializeComponent();
-            this.InitCurrencyBusiness();
-            this.AddItemsToComboBox();
+            this.InitObjectsBusiness();
         }
 
-        private void InitCurrencyBusiness()
+        private void InitObjectsBusiness()
         {
             this.currencyBusiness = new CurrencyBusiness();
+            this.countryBusiness = new CountryBusiness();
         }
 
         private void btn_managerAdd_Click(object sender, EventArgs e)
@@ -31,7 +32,7 @@ namespace IF4101_Lab1_Winform
         private void getCountryInput()
         {
             CountryBusiness countryBusiness = new CountryBusiness();
-            countryBusiness.Country_name = this.txb_managerNameContry.Text;
+            countryBusiness.CountryName = this.txb_managerNameContry.Text;
         }
 
         private void getCurrencyInput()
@@ -39,7 +40,7 @@ namespace IF4101_Lab1_Winform
             //
         }
 
-        private void AddItemsToComboBox()
+        private void AddItemsToComboBoxCurrency()
         {
             List<CurrencyBusiness> currencyList = new List<CurrencyBusiness>();
             currencyList = this.currencyBusiness.GetCurrencyData();
@@ -49,8 +50,19 @@ namespace IF4101_Lab1_Winform
             }
         }
 
+        private void AddItemsToComboBoxCountry()
+        {
+            List<CountryBusiness> countryList = new List<CountryBusiness>();
+            countryList = this.countryBusiness.GetCountryData();
+            for (int i = 0; i < countryList.Count; i++)
+            {
+                this.cmbx_managerCountries.Items.Add(countryList[i].CountryName);
+            }
+        }
+
         private void chbx_managerAdd_Click(object sender, EventArgs e)
         {
+            this.AddItemsToComboBoxCurrency();
             if (this.chbx_managerDelete.Checked)
             {
                 this.setInvisibleDeleteComponets();
@@ -60,6 +72,7 @@ namespace IF4101_Lab1_Winform
 
         private void chbx_managerDelete_Click(object sender, EventArgs e)
         {
+            this.AddItemsToComboBoxCountry();
             if (this.chbx_managerAdd.Checked)
             {
                 this.setInvisibleAddComponents();
