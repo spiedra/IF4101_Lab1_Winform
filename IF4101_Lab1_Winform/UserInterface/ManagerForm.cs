@@ -32,11 +32,6 @@ namespace IF4101_Lab1_Winform
             countryBusiness.CountryName = this.txb_managerNameContry.Text;
         }
 
-        private void getCurrencyInput()
-        {
-            //
-        }
-
         private void AddItemsToComboBoxCurrency()
         {
             List<CurrencyBusiness> currencyList = new List<CurrencyBusiness>();
