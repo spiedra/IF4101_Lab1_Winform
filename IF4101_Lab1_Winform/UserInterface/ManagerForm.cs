@@ -23,10 +23,7 @@ namespace IF4101_Lab1_Winform
 
         private void btn_managerAdd_Click(object sender, EventArgs e)
         {
-            this.getCountryInput();
-            //test
-            //ConnectionDataAccess connectionDataAccess = new ConnectionDataAccess();
-            //connectionDataAccess.insertIntoTbCountry("Costa Rica", 2); 
+            this.countryBusiness.InsertIntoTbCountry(this.txb_managerNameContry.Text, this.cmbx_managerCurrency.SelectedIndex+1);
         }
 
         private void getCountryInput()

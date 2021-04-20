@@ -33,5 +33,10 @@ namespace IF4101_Lab1_Winform.Business
         {
             return this.connectionDataAccess.GetCountryData();
         }
+
+        public void InsertIntoTbCountry(string countryName, int currencyId)
+        {
+            this.connectionDataAccess.InsertIntoTbCountry(countryName, currencyId);
+        }
     }
 }

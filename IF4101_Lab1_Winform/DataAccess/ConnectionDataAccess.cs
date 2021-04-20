@@ -39,6 +39,7 @@ namespace IF4101_Lab1_Winform.DataAccess
             this.sqlConnection.Open();
             this.sqlCommand.CommandType = CommandType.StoredProcedure;
             this.sqlCommand.ExecuteNonQuery();
+            this.sqlConnection.Close();
         }
 
         private void ExecuteReaderQuery(string commandText, bool conditional)
@@ -48,7 +49,7 @@ namespace IF4101_Lab1_Winform.DataAccess
             this.sqlCommand.CommandType = CommandType.StoredProcedure;
             this.sqlDataReader = this.sqlCommand.ExecuteReader();
             this.ReadObjectData(conditional);
-            this.SqlConnectionClose();
+            this.sqlConnection.Close();
         }
 
         private void InitSqlClientComponents(string commandText)
@@ -61,18 +62,17 @@ namespace IF4101_Lab1_Winform.DataAccess
         {
             SqlParameter sqlParameter = new SqlParameter(parameterName, dbType);
             sqlParameter.Value = value;
-            this.sqlCommand.Parameters.Add(parameterName, SqlDbType.VarChar);
+            this.sqlCommand.Parameters.Add(sqlParameter);
         }
 
-        public void InsertIntoTbCountry(string country_name, int currency_id)
+        public void InsertIntoTbCountry(string countryName, int currencyId)
         {
-            bool isExcuteNonQuery = true;
-            string parameterName = "@COUNTRY_NAME", paramerCurrencyId = "@CURRENCY_ID", comandText = "COUNTRIES.sp_INSERT_COUNTRIES";
-            this.InitSqlClientComponents(comandText);
-            this.CreateParameter(parameterName, SqlDbType.VarChar, country_name);
-            this.CreateParameter(paramerCurrencyId, SqlDbType.Int, currency_id);
-            //this.ExecuteStoredProcedure(isExcuteNonQuery);
-            this.SqlConnectionClose();
+            string parameterName = "@COUNTRY_NAME", paramerCurrencyId = "@CURRENCY_ID", commandText = "COUNTRIES.sp_INSERT_COUNTRIES";
+            this.InitSqlClientComponents(commandText);
+            this.CreateParameter(parameterName, SqlDbType.VarChar, countryName);
+            this.CreateParameter(paramerCurrencyId, SqlDbType.Int, currencyId);
+            this.ExecuteNonQuery();
+
         }
 
         public List<CurrencyBusiness> GetCurrencyData()
@@ -128,11 +128,6 @@ namespace IF4101_Lab1_Winform.DataAccess
         static private string GetConnectionString()
         {
             return "Data Source=SPIEDRA\\MYSSQLSERVER; database=IF4101_LAB1_B97452; User Id=juan; Password=piedra";
-        }
-
-        private void SqlConnectionClose()
-        {
-            this.sqlConnection.Close();
         }
     }
 }
