@@ -8,14 +8,14 @@ namespace IF4101_Lab1_Winform.Business
 {
     class CurrencyBusiness
     {
-        private ConnectionDataAccess connectionDataAccess;
+        private CurrencyDataAccess currencyDataAcces;
 
         public CurrencyBusiness() // default constructor
         {
             this.CurrencyId = 0;
             this.CurrencyName = null;
             this.DollaValue = 0;
-            this.connectionDataAccess = new ConnectionDataAccess();
+            this.currencyDataAcces = new CurrencyDataAccess();
         }
         public CurrencyBusiness(int currencyId, string currencyName, decimal dollarValue)
         {
@@ -30,7 +30,7 @@ namespace IF4101_Lab1_Winform.Business
 
         public List<CurrencyBusiness> GetCurrencyData()
         {
-            return this.connectionDataAccess.GetCurrencyData();
+            return this.currencyDataAcces.GetCurrencyData();
         }
     }
 }

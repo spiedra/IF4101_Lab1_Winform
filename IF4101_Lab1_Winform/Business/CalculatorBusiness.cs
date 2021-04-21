@@ -7,10 +7,10 @@ namespace IF4101_Lab1_Winform.Business
 {
     class CalculatorBusiness
     {
-        private ConnectionDataAccess connectionDataAccess;
+        private CurrencyDataAccess currencyDataAccess;
         public CalculatorBusiness()
         {
-            this.connectionDataAccess = new ConnectionDataAccess();
+            this.currencyDataAccess = new CurrencyDataAccess();
         }
 
         public decimal CalculateCurrencyExchange(decimal currencyFrom, decimal currencyTo, decimal amount)
@@ -20,7 +20,7 @@ namespace IF4101_Lab1_Winform.Business
 
         public decimal GetDollarValueCurrency(string countryName)
         {
-            return Math.Round(this.connectionDataAccess.GetDollarValueCurrency(countryName),2);
+            return Math.Round(this.currencyDataAccess.GetDollarValueCurrency(countryName),2);
         }
 
         public decimal GetExchangeProfit(decimal total)

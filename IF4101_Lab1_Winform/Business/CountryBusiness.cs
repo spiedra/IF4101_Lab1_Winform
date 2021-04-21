@@ -7,13 +7,13 @@ namespace IF4101_Lab1_Winform.Business
 {
     class CountryBusiness
     {
-        ConnectionDataAccess connectionDataAccess;
+        CountryDataAccess countryDataAccess;
         public CountryBusiness()
         {
             this.CountryId = 0;
             this.CurrencyId = 0;
             this.CountryName = null;
-            this.connectionDataAccess = new ConnectionDataAccess();
+            this.countryDataAccess = new CountryDataAccess();
         }
 
         public CountryBusiness(int countryId, int currencyId, string countryName)
@@ -31,17 +31,17 @@ namespace IF4101_Lab1_Winform.Business
 
         public List<CountryBusiness> GetCountriesList()
         {
-            return this.connectionDataAccess.GetCountriesList();
+            return this.countryDataAccess.GetCountriesList();
         }
 
         public void InsertIntoTbCountry(string countryName, int countryId)
         {
-            this.connectionDataAccess.InsertIntoTbCountry(countryName, countryId);
+            this.countryDataAccess.InsertIntoTbCountry(countryName, countryId);
         }
 
         public void DeleteCountry(string countryName)
         {
-            this.connectionDataAccess.DeleteCountry(countryName);
+            this.countryDataAccess.DeleteCountry(countryName);
         }
     }
 }
