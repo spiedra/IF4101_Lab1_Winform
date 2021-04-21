@@ -65,14 +65,22 @@ namespace IF4101_Lab1_Winform.DataAccess
             this.sqlCommand.Parameters.Add(sqlParameter);
         }
 
-        public void InsertIntoTbCountry(string countryName, int currencyId)
+        public void InsertIntoTbCountry(string countryName, int countryId)
         {
             string parameterName = "@COUNTRY_NAME", paramerCurrencyId = "@CURRENCY_ID", commandText = "COUNTRIES.sp_INSERT_COUNTRIES";
             this.InitSqlClientComponents(commandText);
             this.CreateParameter(parameterName, SqlDbType.VarChar, countryName);
-            this.CreateParameter(paramerCurrencyId, SqlDbType.Int, currencyId);
+            this.CreateParameter(paramerCurrencyId, SqlDbType.Int, countryId);
             this.ExecuteNonQuery();
 
+        }
+
+        public void DeleteCountry(string countryName)
+        {
+            string parameterName = "@COUNTRY_NAME", commandText = "COUNTRIES.sp_DELETE_COUNTRIES";
+            this.InitSqlClientComponents(commandText);
+            this.CreateParameter(parameterName, SqlDbType.VarChar, countryName);
+            this.ExecuteNonQuery();
         }
 
         public List<CurrencyBusiness> GetCurrencyData()
@@ -82,8 +90,7 @@ namespace IF4101_Lab1_Winform.DataAccess
             return this.currencyList;
         }
 
-
-        public List<CountryBusiness> GetCountryData()
+        public List<CountryBusiness> GetCountriesList()
         {
             string commandText = "COUNTRIES.sp_GET_COUNTRIES_DATA";
             this.ExecuteReaderQuery(commandText, false);
@@ -100,7 +107,7 @@ namespace IF4101_Lab1_Winform.DataAccess
             {
                 this.CountryDataReader();
             }
-           
+
         }
 
         private void CurrencyDataReader()

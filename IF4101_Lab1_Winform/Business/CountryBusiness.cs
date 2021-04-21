@@ -29,14 +29,19 @@ namespace IF4101_Lab1_Winform.Business
         public string CountryName { get; set; }
 
 
-        public List<CountryBusiness> GetCountryData()
+        public List<CountryBusiness> GetCountriesList()
         {
-            return this.connectionDataAccess.GetCountryData();
+            return this.connectionDataAccess.GetCountriesList();
         }
 
-        public void InsertIntoTbCountry(string countryName, int currencyId)
+        public void InsertIntoTbCountry(string countryName, int countryId)
         {
-            this.connectionDataAccess.InsertIntoTbCountry(countryName, currencyId);
+            this.connectionDataAccess.InsertIntoTbCountry(countryName, countryId);
+        }
+
+        public void DeleteCountry(string countryName)
+        {
+            this.connectionDataAccess.DeleteCountry(countryName);
         }
     }
 }

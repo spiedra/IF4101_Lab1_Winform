@@ -23,7 +23,14 @@ namespace IF4101_Lab1_Winform
 
         private void btn_managerAdd_Click(object sender, EventArgs e)
         {
-            this.countryBusiness.InsertIntoTbCountry(this.txb_managerNameContry.Text, this.cmbx_managerCurrency.SelectedIndex+1);
+            if (this.chbx_managerDelete.Checked)
+            {
+                this.countryBusiness.DeleteCountry(this.cmbx_managerCountries.Text);
+            }
+            else
+            {
+                this.countryBusiness.InsertIntoTbCountry(this.txb_managerNameContry.Text, this.cmbx_managerCurrency.SelectedIndex + 1);
+            }
         }
 
         private void getCountryInput()
@@ -36,7 +43,7 @@ namespace IF4101_Lab1_Winform
         {
             List<CurrencyBusiness> currencyList = new List<CurrencyBusiness>();
             currencyList = this.currencyBusiness.GetCurrencyData();
-            for(int i = 0; i < currencyList.Count; i++)
+            for (int i = 0; i < currencyList.Count; i++)
             {
                 this.cmbx_managerCurrency.Items.Add(currencyList[i].CurrencyName);
             }
@@ -45,7 +52,7 @@ namespace IF4101_Lab1_Winform
         private void AddItemsToComboBoxCountry()
         {
             List<CountryBusiness> countryList = new List<CountryBusiness>();
-            countryList = this.countryBusiness.GetCountryData();
+            countryList = this.countryBusiness.GetCountriesList();
             for (int i = 0; i < countryList.Count; i++)
             {
                 this.cmbx_managerCountries.Items.Add(countryList[i].CountryName);
@@ -59,7 +66,7 @@ namespace IF4101_Lab1_Winform
             {
                 this.setInvisibleDeleteComponets();
             }
-            this.setVisibleAddComponents();
+            this.RefreshAddForm();
         }
 
         private void chbx_managerDelete_Click(object sender, EventArgs e)
@@ -69,7 +76,21 @@ namespace IF4101_Lab1_Winform
             {
                 this.setInvisibleAddComponents();
             }
+            this.RefreshDeleteForm();
+        }
+
+        private void RefreshAddForm()
+        {
+            this.setVisibleAddComponents();
+            this.cmbx_managerCurrency.Items.Clear();
+            this.AddItemsToComboBoxCurrency();
+        }
+
+        private void RefreshDeleteForm()
+        {
             this.setVisibleDeleteComponents();
+            this.cmbx_managerCountries.Items.Clear();
+            this.AddItemsToComboBoxCountry();
         }
 
         private void setVisibleDeleteComponents()
