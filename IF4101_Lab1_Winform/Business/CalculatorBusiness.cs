@@ -13,13 +13,19 @@ namespace IF4101_Lab1_Winform.Business
             this.connectionDataAccess = new ConnectionDataAccess();
         }
 
-        public decimal CalculateCurrencyExchange(string countryNameFrom, string countryNameTo, decimal amount)
+        public decimal CalculateCurrencyExchange(decimal currencyFrom, decimal currencyTo, decimal amount)
         {
-            decimal A = this.connectionDataAccess.GetDollarValueCurrency(countryNameFrom);
-            decimal B = this.connectionDataAccess.GetDollarValueCurrency(countryNameTo);
-            decimal DIVI = (A / B);
-            decimal TOTAL =  amount / DIVI;
-            return Math.Round(TOTAL, 2);
+            return Math.Round(amount/(currencyFrom / currencyTo), 2);
+        }
+
+        public decimal GetDollarValueCurrency(string countryName)
+        {
+            return Math.Round(this.connectionDataAccess.GetDollarValueCurrency(countryName),2);
+        }
+
+        public decimal GetExchangeProfit(decimal total)
+        {
+            return total + Math.Round((2*total)/100, 2);
         }
     }
 }

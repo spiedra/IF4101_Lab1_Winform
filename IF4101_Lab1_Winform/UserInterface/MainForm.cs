@@ -43,5 +43,10 @@ namespace IF4101_Lab1_Winform
         {
 
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

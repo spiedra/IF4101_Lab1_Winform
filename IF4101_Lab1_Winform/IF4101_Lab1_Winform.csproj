@@ -10,6 +10,7 @@
     <None Remove="Business\CountryBusiness.cs~RFe21755.TMP" />
     <None Remove="Business\CurrencyBusiness.cs~RFdabd40.TMP" />
     <None Remove="Business\CurrencyBusiness.cs~RFe17d09.TMP" />
+    <None Remove="UserInterface\MessageForm.cs~RF43be49.TMP" />
   </ItemGroup>
 
   <ItemGroup>

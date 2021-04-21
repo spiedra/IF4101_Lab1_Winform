@@ -31,6 +31,7 @@ namespace IF4101_Lab1_Winform
             else
             {
                 this.countryBusiness.InsertIntoTbCountry(this.txb_managerNameContry.Text, this.cmbx_managerCurrency.SelectedIndex + 1);
+                this.RefreshAddForm();
             }
         }
 

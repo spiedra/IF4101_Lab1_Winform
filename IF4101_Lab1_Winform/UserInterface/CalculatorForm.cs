@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using IF4101_Lab1_Winform.Business;
+using IF4101_Lab1_Winform.UserInterface;
 
 namespace IF4101_Lab1_Winform
 {
@@ -15,6 +16,9 @@ namespace IF4101_Lab1_Winform
         private CountryBusiness countryBusiness;
         private CalculatorBusiness calculatorBusiness;
         private List<CountryBusiness> countryList;
+        private decimal currencyFrom;
+        private decimal currencyTo;
+        private decimal total;
         public CalculatorForm()
         {
             InitializeComponent();
@@ -42,9 +46,30 @@ namespace IF4101_Lab1_Winform
 
         private void btn_calculatorCalculate_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("hola"+ this.calculatorBusiness.CalculateCurrencyExchange(this.cbx_calculatorFrom.Text
-                , this.cbx_calculatorTo.Text, decimal.Parse(this.tbx_calculatorAmount.Text)));
-           
+            MessageForm messageForm = new MessageForm(this.CreateFinalString());
+            messageForm.Show();
+        }
+
+        private string CreateFinalString()
+        {
+            this.GetMessageValue();
+            string message = "Selected countries:" + String.Format(Environment.NewLine)
+                + String.Format(Environment.NewLine) + "Amount: " + this.tbx_calculatorAmount.Text
+                + String.Format(Environment.NewLine) + String.Format(Environment.NewLine) + "From: " + this.cbx_calculatorFrom.Text
+                + String.Format(Environment.NewLine) + "Currency value: " + this.currencyFrom
+                + String.Format(Environment.NewLine) + String.Format(Environment.NewLine) + "To: " + this.cbx_calculatorTo.Text
+                + String.Format(Environment.NewLine) + "Currency value: " + this.calculatorBusiness.GetDollarValueCurrency(this.cbx_calculatorTo.Text)
+                + String.Format(Environment.NewLine) + String.Format(Environment.NewLine) + "Total: " + this.total
+                + String.Format(Environment.NewLine) + "Total + cost: " + this.calculatorBusiness.GetExchangeProfit(this.total);
+            return message;
+        }
+
+        private void GetMessageValue()
+        {
+            this.currencyFrom = this.calculatorBusiness.GetDollarValueCurrency(this.cbx_calculatorFrom.Text);
+            this.currencyTo = this.calculatorBusiness.GetDollarValueCurrency(this.cbx_calculatorTo.Text);
+            this.total = this.calculatorBusiness.CalculateCurrencyExchange(currencyFrom, currencyTo
+                , decimal.Parse(this.tbx_calculatorAmount.Text));
         }
     }
 }
