@@ -26,6 +26,7 @@ namespace IF4101_Lab1_Winform
             if (this.chbx_managerDelete.Checked)
             {
                 this.countryBusiness.DeleteCountry(this.cmbx_managerCountries.Text);
+                this.RefreshDeleteForm();
             }
             else
             {
@@ -66,6 +67,7 @@ namespace IF4101_Lab1_Winform
             {
                 this.setInvisibleDeleteComponets();
             }
+            this.setVisibleAddComponents();
             this.RefreshAddForm();
         }
 
@@ -76,19 +78,21 @@ namespace IF4101_Lab1_Winform
             {
                 this.setInvisibleAddComponents();
             }
+            this.setVisibleDeleteComponents();
             this.RefreshDeleteForm();
         }
 
         private void RefreshAddForm()
         {
-            this.setVisibleAddComponents();
+            this.txb_managerNameContry.Clear();
+            this.cmbx_managerCurrency.Text = null;
             this.cmbx_managerCurrency.Items.Clear();
             this.AddItemsToComboBoxCurrency();
         }
 
         private void RefreshDeleteForm()
         {
-            this.setVisibleDeleteComponents();
+            this.cmbx_managerCountries.Text = null;
             this.cmbx_managerCountries.Items.Clear();
             this.AddItemsToComboBoxCountry();
         }
