@@ -33,7 +33,7 @@ namespace IF4101_Lab1_Winform.DataAccess
 
         static private string GetConnectionString()
         {
-            return "Data Source=SPIEDRA\\MYSSQLSERVER; database=IF4101_LAB1_B97452; User Id=juan; Password=piedra";
+            return "Data Source=163.178.107.10; database=IF4101_B97452_LAB1; User Id=laboratorios; Password=KmZpo.2796";
         }
     }
 }

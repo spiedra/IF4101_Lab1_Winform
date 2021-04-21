@@ -1,7 +1,7 @@
-USE IF4101_LAB1_B97452
+USE [IF4101_B97452_LAB1]
 GO
 
-INSERT INTO [COUNTRIES].[tb_COUNTRY]
+INSERT INTO [COUNTRIES].[B97452_IF4101_tb_COUNTRY]
 (
   [CURRENCY_ID]
 , [COUNTRY_NAME]
@@ -31,4 +31,13 @@ VALUES
 ),(
 8
 ,'Japan'
+),(
+9
+,'Guatemala'
+),(
+10
+,'India'
+),(
+11
+,'United States'
 )
