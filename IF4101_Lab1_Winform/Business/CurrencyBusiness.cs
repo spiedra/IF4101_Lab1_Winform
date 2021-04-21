@@ -17,7 +17,7 @@ namespace IF4101_Lab1_Winform.Business
             this.DollaValue = 0;
             this.connectionDataAccess = new ConnectionDataAccess();
         }
-        public CurrencyBusiness(int currencyId, string currencyName, int dollarValue)
+        public CurrencyBusiness(int currencyId, string currencyName, decimal dollarValue)
         {
             this.CurrencyId = currencyId;
             this.CurrencyName = currencyName;
@@ -26,7 +26,7 @@ namespace IF4101_Lab1_Winform.Business
 
         public int CurrencyId { get; set; }
         public string CurrencyName { get; set; }
-        public int DollaValue { get; set; }
+        public decimal DollaValue { get; set; }
 
         public List<CurrencyBusiness> GetCurrencyData()
         {

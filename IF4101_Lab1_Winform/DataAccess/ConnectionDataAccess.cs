@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-// To connection
 using System.Data;
 using System.Data.SqlClient;
 using IF4101_Lab1_Winform.Business;
@@ -116,9 +115,26 @@ namespace IF4101_Lab1_Winform.DataAccess
             while (this.sqlDataReader.Read())
             {
                 CurrencyBusiness currencyDataAccess = new CurrencyBusiness(this.sqlDataReader.GetInt32(0),
-                    this.sqlDataReader.GetString(1), this.sqlDataReader.GetInt32(2));
+                    this.sqlDataReader.GetString(1), this.sqlDataReader.GetDecimal(2));
                 this.currencyList.Add(currencyDataAccess);
             }
+        }
+
+        public decimal GetDollarValueCurrency(string countryName)
+        {
+            string parameterName = "@COUNTRY_NAME", commandText = "CURRENCY.sp_GET_DOLLAR_VALUE_CURRENCY";
+            this.InitSqlClientComponents(commandText);
+            this.CreateParameter(parameterName, SqlDbType.VarChar, countryName);
+            this.sqlConnection.Open();
+            this.sqlCommand.CommandType = CommandType.StoredProcedure;
+            this.sqlDataReader = this.sqlCommand.ExecuteReader();
+            while (this.sqlDataReader.Read())
+            {
+                decimal SOILA = this.sqlDataReader.GetDecimal(0);
+                return SOILA;
+            }
+            this.sqlConnection.Close();
+            return 0;
         }
 
         private void CountryDataReader()

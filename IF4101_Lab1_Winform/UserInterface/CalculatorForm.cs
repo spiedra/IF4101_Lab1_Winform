@@ -13,22 +13,25 @@ namespace IF4101_Lab1_Winform
     {
         private CurrencyBusiness currencyBusiness;
         private CountryBusiness countryBusiness;
+        private CalculatorBusiness calculatorBusiness;
+        private List<CountryBusiness> countryList;
         public CalculatorForm()
         {
             InitializeComponent();
-            this.InitObjectsBusiness();
+            this.InitObjects();
         }
 
-        private void InitObjectsBusiness()
+        private void InitObjects()
         {
             this.currencyBusiness = new CurrencyBusiness();
             this.countryBusiness = new CountryBusiness();
+            this.calculatorBusiness = new CalculatorBusiness();
             this.AddItemsToComboBoxCountry();
         }
 
         private void AddItemsToComboBoxCountry()
         {
-            List<CountryBusiness> countryList = new List<CountryBusiness>();
+            this.countryList = new List<CountryBusiness>();
             countryList = this.countryBusiness.GetCountriesList();
             for (int i = 0; i < countryList.Count; i++)
             {
@@ -37,39 +40,11 @@ namespace IF4101_Lab1_Winform
             }
         }
 
-        private void tbx_calculatorAmount_TextChanged(object sender, EventArgs e)
+        private void btn_calculatorCalculate_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void lb_calculatorAmount_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void CalculatorWindow_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lb_calculatorTo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
+            MessageBox.Show("hola"+ this.calculatorBusiness.CalculateCurrencyExchange(this.cbx_calculatorFrom.Text
+                , this.cbx_calculatorTo.Text, decimal.Parse(this.tbx_calculatorAmount.Text)));
+           
         }
     }
 }

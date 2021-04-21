@@ -58,7 +58,6 @@ namespace IF4101_Lab1_Winform
             this.lb_calculatorAmount.Size = new System.Drawing.Size(125, 41);
             this.lb_calculatorAmount.TabIndex = 2;
             this.lb_calculatorAmount.Text = "Amount";
-            this.lb_calculatorAmount.Click += new System.EventHandler(this.lb_calculatorAmount_Click);
             // 
             // tbx_calculatorAmount
             // 
@@ -67,7 +66,6 @@ namespace IF4101_Lab1_Winform
             this.tbx_calculatorAmount.Name = "tbx_calculatorAmount";
             this.tbx_calculatorAmount.Size = new System.Drawing.Size(270, 39);
             this.tbx_calculatorAmount.TabIndex = 3;
-            this.tbx_calculatorAmount.TextChanged += new System.EventHandler(this.tbx_calculatorAmount_TextChanged);
             // 
             // lb_calculatorFrom
             // 
@@ -98,7 +96,6 @@ namespace IF4101_Lab1_Winform
             this.lb_calculatorTo.Size = new System.Drawing.Size(49, 41);
             this.lb_calculatorTo.TabIndex = 7;
             this.lb_calculatorTo.Text = "To";
-            this.lb_calculatorTo.Click += new System.EventHandler(this.lb_calculatorTo_Click);
             // 
             // cbx_calculatorTo
             // 
@@ -109,7 +106,6 @@ namespace IF4101_Lab1_Winform
             this.cbx_calculatorTo.Name = "cbx_calculatorTo";
             this.cbx_calculatorTo.Size = new System.Drawing.Size(318, 39);
             this.cbx_calculatorTo.TabIndex = 8;
-            this.cbx_calculatorTo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // btn_calculatorCalculate
             // 
@@ -126,6 +122,7 @@ namespace IF4101_Lab1_Winform
             this.btn_calculatorCalculate.TabIndex = 9;
             this.btn_calculatorCalculate.Text = "Calculate";
             this.btn_calculatorCalculate.UseVisualStyleBackColor = false;
+            this.btn_calculatorCalculate.Click += new System.EventHandler(this.btn_calculatorCalculate_Click);
             // 
             // CalculatorForm
             // 
@@ -145,7 +142,6 @@ namespace IF4101_Lab1_Winform
             this.MinimizeBox = false;
             this.Name = "CalculatorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.CalculatorWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
