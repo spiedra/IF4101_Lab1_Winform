@@ -38,5 +38,10 @@ namespace IF4101_Lab1_Winform
             ManagerForm managerWindow = new ManagerForm();
             managerWindow.Show();
         }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

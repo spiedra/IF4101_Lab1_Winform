@@ -48,6 +48,7 @@ namespace IF4101_Lab1_Winform
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.lb_mainForm = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -151,44 +152,63 @@ namespace IF4101_Lab1_Winform
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.menuStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.toolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1255, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1255, 60);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // toolStripMenuItem1
             // 
-            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.toolStripMenuItem1.BackColor = System.Drawing.Color.Gainsboro;
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.toolStripMenuItem1.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(159, 24);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(254, 36);
             this.toolStripMenuItem1.Text = "Currency Calculator";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
-            this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.toolStripMenuItem2.BackColor = System.Drawing.Color.Gainsboro;
+            this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.toolStripMenuItem2.Margin = new System.Windows.Forms.Padding(10, 10, 0, 10);
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(64, 24);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(94, 36);
             this.toolStripMenuItem2.Text = "CRUD";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
-            // MainWindow
+            // lb_mainForm
+            // 
+            this.lb_mainForm.AutoSize = true;
+            this.lb_mainForm.Font = new System.Drawing.Font("Segoe UI", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lb_mainForm.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lb_mainForm.Location = new System.Drawing.Point(323, 308);
+            this.lb_mainForm.Name = "lb_mainForm";
+            this.lb_mainForm.Size = new System.Drawing.Size(541, 93);
+            this.lb_mainForm.TabIndex = 1;
+            this.lb_mainForm.Text = "IF4101 - Lab #1";
+            this.lb_mainForm.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Menu;
+            this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(1255, 707);
+            this.Controls.Add(this.lb_mainForm);
             this.Controls.Add(this.menuStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.ForeColor = System.Drawing.SystemColors.Control;
-            this.Name = "MainWindow";
-            this.Text = "Main Window";
+            this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Main Form";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -217,6 +237,7 @@ namespace IF4101_Lab1_Winform
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.Label lb_mainForm;
     }
 }
 

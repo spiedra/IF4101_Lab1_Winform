@@ -113,11 +113,12 @@ namespace IF4101_Lab1_Winform
             // 
             // btn_calculatorCalculate
             // 
-            this.btn_calculatorCalculate.BackColor = System.Drawing.Color.Gainsboro;
+            this.btn_calculatorCalculate.BackColor = System.Drawing.Color.Silver;
             this.btn_calculatorCalculate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_calculatorCalculate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_calculatorCalculate.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btn_calculatorCalculate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btn_calculatorCalculate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_calculatorCalculate.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_calculatorCalculate.Location = new System.Drawing.Point(570, 428);
             this.btn_calculatorCalculate.Name = "btn_calculatorCalculate";
@@ -126,11 +127,11 @@ namespace IF4101_Lab1_Winform
             this.btn_calculatorCalculate.Text = "Calculate";
             this.btn_calculatorCalculate.UseVisualStyleBackColor = false;
             // 
-            // CalculatorWindow
+            // CalculatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1341, 547);
             this.Controls.Add(this.btn_calculatorCalculate);
             this.Controls.Add(this.cbx_calculatorTo);
@@ -142,7 +143,8 @@ namespace IF4101_Lab1_Winform
             this.Controls.Add(this.lb_calculatorTittle);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CalculatorWindow";
+            this.Name = "CalculatorForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.CalculatorWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

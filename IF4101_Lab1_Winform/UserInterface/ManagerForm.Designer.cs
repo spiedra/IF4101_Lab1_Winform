@@ -49,6 +49,7 @@ namespace IF4101_Lab1_Winform
             this.lb_managerTittle.Size = new System.Drawing.Size(436, 72);
             this.lb_managerTittle.TabIndex = 0;
             this.lb_managerTittle.Text = "CRUD Countries";
+            this.lb_managerTittle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lb_managerNameCountry
             // 
@@ -64,7 +65,7 @@ namespace IF4101_Lab1_Winform
             // chbx_managerAdd
             // 
             this.chbx_managerAdd.AutoSize = true;
-            this.chbx_managerAdd.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.chbx_managerAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chbx_managerAdd.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.chbx_managerAdd.Location = new System.Drawing.Point(410, 101);
             this.chbx_managerAdd.Name = "chbx_managerAdd";
@@ -77,7 +78,7 @@ namespace IF4101_Lab1_Winform
             // chbx_managerDelete
             // 
             this.chbx_managerDelete.AutoSize = true;
-            this.chbx_managerDelete.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.chbx_managerDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chbx_managerDelete.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.chbx_managerDelete.Location = new System.Drawing.Point(558, 101);
             this.chbx_managerDelete.Name = "chbx_managerDelete";
@@ -110,6 +111,7 @@ namespace IF4101_Lab1_Winform
             // 
             // cmbx_managerCurrency
             // 
+            this.cmbx_managerCurrency.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.cmbx_managerCurrency.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbx_managerCurrency.FormattingEnabled = true;
             this.cmbx_managerCurrency.Location = new System.Drawing.Point(251, 293);
@@ -122,18 +124,22 @@ namespace IF4101_Lab1_Winform
             // 
             // btn_managerAdd
             // 
+            this.btn_managerAdd.BackColor = System.Drawing.Color.Silver;
+            this.btn_managerAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_managerAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_managerAdd.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_managerAdd.Location = new System.Drawing.Point(468, 379);
             this.btn_managerAdd.Name = "btn_managerAdd";
             this.btn_managerAdd.Size = new System.Drawing.Size(123, 55);
             this.btn_managerAdd.TabIndex = 7;
             this.btn_managerAdd.Text = "Add";
-            this.btn_managerAdd.UseVisualStyleBackColor = true;
+            this.btn_managerAdd.UseVisualStyleBackColor = false;
             this.btn_managerAdd.Visible = false;
             this.btn_managerAdd.Click += new System.EventHandler(this.btn_managerAdd_Click);
             // 
             // cmbx_managerCountries
             // 
+            this.cmbx_managerCountries.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.cmbx_managerCountries.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbx_managerCountries.FormattingEnabled = true;
             this.cmbx_managerCountries.Location = new System.Drawing.Point(251, 208);
@@ -146,6 +152,7 @@ namespace IF4101_Lab1_Winform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1031, 512);
             this.Controls.Add(this.cmbx_managerCountries);
             this.Controls.Add(this.btn_managerAdd);
@@ -160,7 +167,7 @@ namespace IF4101_Lab1_Winform
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ManagerForm";
-            this.Text = "Add";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
             this.PerformLayout();
 
